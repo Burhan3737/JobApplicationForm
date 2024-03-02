@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Job Application Form</title>
+  </head>
+  <body>
+    <form id="jobApplicationForm">
+      <h1>Job Application Form</h1>
+      <h2>Personal Information</h2>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required />
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="street">Street Address:</label>
+      <input type="text" id="street" name="street" required />
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required />
+
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required />
+
+      <label for="zipCode">ZIP Code:</label>
+      <input
+        type="text"
+        id="zipCode"
+        name="zipCode"
+        required
+        pattern="[0-9]{5}"
+      />
+
+      <h2>Resume and Cover Letter</h2>
+      <label for="resume">Upload Resume:</label>
+      <input
+        type="file"
+        id="resume"
+        name="resume"
+        accept=".pdf,.doc,.docx"
+        required
+      />
+
+      <label for="coverLetter">Cover Letter:</label>
+      <textarea
+        id="coverLetter"
+        name="coverLetter"
+        rows="4"
+        required
+      ></textarea>
+
+      <h2>Education</h2>
+      <label for="educationLevel">Highest Level of Education Attained:</label>
+      <input type="text" id="educationLevel" name="educationLevel" required />
+
+      <label for="schoolName">Name of School/University:</label>
+      <input type="text" id="schoolName" name="schoolName" required />
+
+      <label for="major">Major/Area of Study:</label>
+      <input type="text" id="major" name="major" required />
+
+      <label for="graduationYear">Graduation Year:</label>
+      <input type="text" id="graduationYear" name="graduationYear" required />
+
+      <h2>Employment History</h2>
+      <label for="jobTitles">Previous Job Titles:</label>
+      <input type="text" id="jobTitles" name="jobTitles" required />
+
+      <label for="companyNames">Company Names:</label>
+      <input type="text" id="companyNames" name="companyNames" required />
+
+      <div id="companyNamesList"></div>
+
+      <label for="employmentDates">Employment Dates:</label>
+      <input type="text" id="employmentDates" name="employmentDates" required />
+
+      <label for="jobResponsibilities">Job Responsibilities:</label>
+      <textarea
+        id="jobResponsibilities"
+        name="jobResponsibilities"
+        rows="4"
+        required
+      ></textarea>
+
+      <h2>Skills</h2>
+      <label for="relevantSkills">Relevant Skills:</label>
+      <input type="text" id="relevantSkills" name="relevantSkills" required />
+
+      <label for="certifications">Certifications:</label>
+      <input type="text" id="certifications" name="certifications" required />
+
+      <h2>Availability</h2>
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required />
+
+      <label for="workSchedule">Preferred Work Schedule:</label>
+      <input type="text" id="workSchedule" name="workSchedule" required />
+
+      <label for="relocate">Willingness to Relocate:</label>
+      <input type="text" id="relocate" name="relocate" required />
+
+      <h2>References</h2>
+      <label for="referenceName">Reference Name:</label>
+      <input type="text" id="referenceName" name="referenceName" required />
+
+      <label for="referenceContact">Reference Contact Information:</label>
+      <input
+        type="text"
+        id="referenceContact"
+        name="referenceContact"
+        required=""
+      />
+
+      <label for="relationship">Relationship to Applicant:</label>
+      <input type="text" id="relationship" name="relationship" required />
+
+      <h2>Additional Questions</h2>
+      <label for="whyWorkHere">Why do you want to work for this company?</label>
+      <textarea
+        id="whyWorkHere"
+        name="whyWorkHere"
+        rows="4"
+        required
+      ></textarea>
+
+      <h2>Consent and Agreement</h2>
+      <div class="checkbox-section">
+      <label for="agreeTerms">I agree to the terms and conditions</label>
+      <input type="checkbox" id="agreeTerms" name="agreeTerms" required />
+    </div>
+     <div class="checkbox-section">
+      <label for="privacyPolicy">I acknowledge the Privacy Policy</label>
+      <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required />
+    </div>
+
+      <!-- Submit Button -->
+      <button type="submit" onclick="submitForm()">Submit Application</button>
+    </form>
+
+    <!-- Table Display Button -->
+    <button
+      id="viewTableBtn"
+      style="display: none"
+      onclick="viewApplicationsAsTable()"
+    >
+      View Applications as Table
+    </button>
+
+    <!-- Table Display -->
+    <table id="applicationsTable" style="display: none" class="table-primary">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <!-- <th>Resume</th>
+          <th>Cover Letter</th> -->
+          <th>Education Level</th>
+          <!-- <th>School/University</th>
+          <th>Major/Area of Study</th>
+          <th>Graduation Year</th> -->
+          <th>Previous Job Titles</th>
+          <!-- <th>Company Names</th> -->
+          <!-- <th>Employment Dates</th> -->
+          <th>Job Responsibilities</th>
+          <th>Relevant Skills</th>
+          <th>Certifications</th>
+          <!-- <th>Start Date</th>
+          <th>Preferred Work Schedule</th>
+          <th>Willingness to Relocate</th>
+          <th>Reference Name</th>
+          <th>Reference Contact</th>
+          <th>Relationship</th>
+          <th>Why Work Here</th> -->
+          <!-- Add additional headers for other fields -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Application data will be dynamically inserted here -->
+      </tbody>
+    </table>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let tableData = [];
+
+      function validateFormData(formData) {
+        let emptyFields = [];
+
+        for (let field in formData) {
+          if (formData.hasOwnProperty(field)) {
+            if (!formData[field]) {
+              emptyFields.push(field);
+            }
+          }
+        }
+
+        return emptyFields;
+      }
+
+      function submitForm() {
+        // Implement client-side validation using JavaScript
+        // Example: Validate email format
+        var emailInput = document.getElementById("email");
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value)) {
+          alert("Invalid email address. Please enter a valid email.");
+          return;
+        }
+
+        var phoneNumberInput = document.getElementById("phoneNumber");
+        var phoneNumberRegex = /^\d{10}$/;
+        if (!phoneNumberRegex.test(phoneNumberInput.value)) {
+          alert("Invalid phone number. Please enter a 10-digit phone number.");
+          return;
+        }
+
+        // Similar validation for other fields
+
+        // If all validations pass, proceed to submit and log data
+        let formData = {
+          firstName: document.getElementById("firstName").value,
+          lastName: document.getElementById("lastName").value,
+          phoneNumber: document.getElementById("phoneNumber").value,
+          email: document.getElementById("email").value,
+          street: document.getElementById("street").value,
+          city: document.getElementById("city").value,
+          state: document.getElementById("state").value,
+          zipCode: document.getElementById("zipCode").value,
+          resume: document.getElementById("resume").value,
+          coverLetter: document.getElementById("coverLetter").value,
+          educationLevel: document.getElementById("educationLevel").value,
+          schoolName: document.getElementById("schoolName").value,
+          major: document.getElementById("major").value,
+          graduationYear: document.getElementById("graduationYear").value,
+          jobTitles: document.getElementById("jobTitles").value,
+          companyNames: document.getElementById("companyNames").value,
+          employmentDates: document.getElementById("employmentDates").value,
+          jobResponsibilities: document.getElementById("jobResponsibilities")
+            .value,
+          relevantSkills: document.getElementById("relevantSkills").value,
+          certifications: document.getElementById("certifications").value,
+          startDate: document.getElementById("startDate").value,
+          workSchedule: document.getElementById("workSchedule").value,
+          relocate: document.getElementById("relocate").value,
+          referenceName: document.getElementById("referenceName").value,
+          referenceContact: document.getElementById("referenceContact").value,
+          relationship: document.getElementById("relationship").value,
+          whyWorkHere: document.getElementById("whyWorkHere").value,
+          agreeTerms: document.getElementById("agreeTerms").checked,
+          privacyPolicy: document.getElementById("privacyPolicy").checked,
+        };
+
+        // Call the function and get the list of empty fields
+        let emptyFields = validateFormData(formData);
+
+        // Check if there are empty fields and display alerts
+        if (emptyFields.length > 0) {
+          let message = "Please fill in the following fields:\n";
+          emptyFields.forEach((field) => {
+            message += `- ${field}\n`;
+          });
+          alert(message);
+          return;
+        } else {
+          alert("All fields are filled. Form Submitted");
+        }
+
+        tableData.push(formData);
+
+        console.log("Submitted Application Data:", formData);
+
+        // Display the "View Applications as Table" button
+        document.getElementById("viewTableBtn").style.display = "block";
+        document.getElementById("applicationsTable").style.display = "none";
+      }
+
+      function viewApplicationsAsTable() {
+        // Retrieve submitted application data and dynamically create table rows
+        var submittedData = tableData; // Assume this array holds the submitted data
+
+        var tableBody = document
+          .getElementById("applicationsTable")
+          .getElementsByTagName("tbody")[0];
+        tableBody.innerHTML = "";
+
+        submittedData.forEach(function (data) {
+          var row = tableBody.insertRow();
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+          var cell6 = row.insertCell(5);
+          var cell7 = row.insertCell(6);
+          var cell8 = row.insertCell(7);
+
+          cell1.innerHTML = data.firstName + " " + data.lastName;
+          cell2.innerHTML = data.email;
+          cell3.innerHTML = data.phoneNumber;
+          cell4.innerHTML = data.educationLevel;
+          cell5.innerHTML = data.jobTitles;
+          cell6.innerHTML = data.jobResponsibilities;
+          cell7.innerHTML = data.relevantSkills;
+          cell8.innerHTML = data.certifications;
+        });
+
+        // Display the table
+        document.getElementById("applicationsTable").style.display = "table";
+      }
+    </script>
+  </body>
+</html>
